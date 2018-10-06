@@ -1,36 +1,90 @@
 <div class="main-wrapper">
 	<div class="transparent-white-container">
 		<div class="container-fluid">
-			<div class="row no-margin">
-				
-				<!-- <div class="data-table col-12 nopad">
-					<div class="table-responsive col-12  nopad">
-						<table class="table table-hover table-striped mb-0">
-							<thead>
-								<tr>
-									<th scope="col">Status</th>
-									<th scope="col">x</th>
-									<th scope="col">y</th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr *ngFor="let item of array let i = index">
-									<td scope="col">{{item}}</td>
-										<td scope="col">{{message[i].x}}</td>
-											<td scope="col">{{message[i].y}}</td>
-									<td>
-										<div class="row no-gutters table-action">
-											<div class="col text-center"><i class="fa fa-pencil cursor" aria-hidden="true" (click)='goto(i,item,message[i].x,message[i].y)'></i></div>
-										</div>
-									</td>
-								</tr>
-
-							</tbody>
-						</table>
+			<h1 style="text-align:center">Patient/Recipient Information</h1>
+			<form [formGroup]="rForm" (ngSubmit)="bloodgroupAdd(rForm)">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="firstname">First Name</label>
+						<input type="text" class="form-control" id="firstname" placeholder="Rahul" formControlName="firstName">
+						<div class="alert alert-danger alert-own" *ngIf="!rForm.controls['firstName'].valid && (rForm.controls['firstName'].touched || isformcorrect )">
+							<div *ngIf="rForm.controls['firstName'].errors.required"> First Name is required</div>
+						</div>
 					</div>
-				</div> -->
-			</div>
+					<div class="form-group col-md-6">
+						<label for="lastname">Last Name</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Kumar" formControlName="lastName">
+						<div class="alert alert-danger alert-own" *ngIf="!rForm.controls['lastName'].valid && (rForm.controls['lastName'].touched || isformcorrect )">
+							<div *ngIf="rForm.controls['lastName'].errors.required"> Last Name is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputAddress">Address</label>
+					<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" formControlName="addressName">
+					<div class="alert alert-danger alert-own" *ngIf="!rForm.controls['addressName'].valid && (rForm.controls['addressName'].touched || isformcorrect )">
+						<div *ngIf="rForm.controls['addressName'].errors.required"> Address is required</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="group">Blood Group</label>
+					<select id="inputState" class="form-control" formControlName="bloodgroup">
+						<option disabled>Please select blood group</option>
+						<option value="A+">A+</option>
+						<option value="B+">B+</option>
+						<option value="O+">O+</option>
+						<option value="AB+">AB+</option>
+						<option value="A-">A-</option>
+						<option value="B-">B-</option>
+						<option value="O-">O-</option>
+						<option value="AB-">AB-</option>
+					</select>
+					<div class="alert alert-danger alert-own" *ngIf="!rForm.controls['bloodgroup'].valid && (rForm.controls['bloodgroup'].touched || isformcorrect )">
+						<div *ngIf="rForm.controls['bloodgroup'].errors.required"> Blood group is required</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="bottles">No. of bottles</label>
+						<input type="number" min="1" class="form-control" id="bottles" formControlName="bottle">
+						<div class="alert alert-danger alert-own" *ngIf="!rForm.controls['bottle'].valid && (rForm.controls['bottle'].touched || isformcorrect )">
+							<div *ngIf="rForm.controls['bottle'].errors.required"> No. of bottles is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary">Save changes</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="bresponse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalCenterTitle">Blood Bank Response</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+					<div *ngIf="!isAvailable" class="alert alert-danger" role="alert">
+							Required amount blood is not available
+						  </div>
+						  <div *ngIf="isAvailable" class="alert alert-success" role="alert">
+								Get well soon
+							  </div>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		  </div>
+		</div>
+	  </div>

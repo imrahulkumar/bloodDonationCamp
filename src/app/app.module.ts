@@ -28,6 +28,7 @@ import { IAppState, rootReducer ,INITIAL_STATE} from "./store";
     NgReduxModule,
     FormsModule,
     ReactiveFormsModule,
+ 
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]

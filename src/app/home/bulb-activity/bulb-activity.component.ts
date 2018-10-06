@@ -1,14 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngrx/store";
-import { Router, ActivatedRoute, Params } from "@angular/router";
-import {
-  NgRedux,
-  DevToolsExtension,
-  NgReduxModule,
-  select
-} from "@angular-redux/store";
-import { IAppState } from "../../store";
-import { DataServiceService } from "../msgService/data-service.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 declare var $: any;
 @Component({
@@ -17,7 +7,7 @@ declare var $: any;
   styleUrls: ["./bulb-activity.component.css"]
 })
 export class BulbActivityComponent implements OnInit {
-  constructor( private formBuilder: FormBuilder,) { }
+  constructor( private formBuilder: FormBuilder) { }
 bloodAplus:any=3;
 bloodBplus:any=8;
 bloodOplus:any= 2;
@@ -36,6 +26,7 @@ isformcorrect:boolean= false;
       bloodgroup:["",Validators.required],
       bottle:["",Validators.required],
   })
+  this.settingLocalStorageValue();
 }
 
   bloodDonateForm()
@@ -81,6 +72,19 @@ isformcorrect:boolean= false;
     this.bloodABminus += rForm.value.bottle;
    }
    $("#bloodDonorForm").modal('hide');
+   this.settingLocalStorageValue();
   }
+settingLocalStorageValue()
+{
+  localStorage.setItem("bloodAplus", this.bloodAplus);
+  localStorage.setItem("bloodBplus", this.bloodBplus);
+  localStorage.setItem("bloodOplus", this.bloodOplus);
+  localStorage.setItem("bloodABplus", this.bloodABplus);
+  localStorage.setItem("bloodAminus", this.bloodAminus);
+  localStorage.setItem("bloodBminus", this.bloodBminus);
+  localStorage.setItem("bloodOminus", this.bloodOminus);
+  localStorage.setItem("bloodABminus", this.bloodABminus);
+}
+ 
 
 }

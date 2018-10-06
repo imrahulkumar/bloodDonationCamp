@@ -6,8 +6,8 @@ import { LogComponent } from './home/log/log.component';
 
 const routes: Routes = [
   { path: "", component: BulbActivityComponent },
-  { path: "log", component: LogComponent },
-  { path: "existActicity/:i/:item/:x/:y", component: BulbActivityComponent },
+  { path: "blood-recipient", component: LogComponent },
+  // { path: "existActicity/:i/:item/:x/:y", component: BulbActivityComponent },
 ];
 
 // existActicity/${i}/${item}
