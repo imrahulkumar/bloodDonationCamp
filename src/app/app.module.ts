@@ -6,7 +6,7 @@ import { BulbActivityComponent } from "./home/bulb-activity/bulb-activity.compon
 import { LogComponent } from "./home/log/log.component";
 import { AppRoutingModule } from ".//app-routing.module";
 import { DataServiceService  } from "./home/msgService/data-service.service";
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {
   NgRedux,
   DevToolsExtension,
@@ -25,7 +25,9 @@ import { IAppState, rootReducer ,INITIAL_STATE} from "./store";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgReduxModule
+    NgReduxModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [DataServiceService],
   bootstrap: [AppComponent]
