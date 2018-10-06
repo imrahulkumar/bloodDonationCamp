@@ -1,10 +1,10 @@
-# Svg
+# Blood Donation Camp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Project is Hosted at: heroku
 
- hosted link:-https://svgmyapp.herokuapp.com/
+
 
 ## Development server
 
