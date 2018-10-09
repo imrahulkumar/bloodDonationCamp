@@ -12,15 +12,17 @@ import {
   DevToolsExtension,
   NgReduxModule
 } from "@angular-redux/store";
-
+import { DragulaModule } from 'ng2-dragula';
 import { IAppState, rootReducer ,INITIAL_STATE} from "./store";
+import { DragComponent } from './home/drag/drag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BulbActivityComponent,
-    LogComponent
+    LogComponent,
+    DragComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { IAppState, rootReducer ,INITIAL_STATE} from "./store";
     NgReduxModule,
     FormsModule,
     ReactiveFormsModule,
+    DragulaModule.forRoot()
  
   ],
   providers: [DataServiceService],

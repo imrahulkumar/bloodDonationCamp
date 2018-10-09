@@ -1132,3 +1132,23 @@ width: 121px;
 	width: fit-content;
 
 }
+
+.borderStyle{
+	border-style: dotted;
+	box-sizing: border-box;
+    width: 200px;
+    height: 200px;      
+	border: 10px solid blue;
+	border-top: 5px  red;
+}
+
+#bloodbucket {
+	caption-side: bottom;
+    
+}
+
+.bucketpos{
+	position:absolute;
+	left:546px;
+	bottom: 20px;
+}
